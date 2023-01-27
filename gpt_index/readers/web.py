@@ -180,7 +180,7 @@ class BeautifulSoupWebReader(BaseReader):
         for url in urls:
             try:
                 session = requests.Session()
-                session.headers.update({"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"})
+                session.headers.update({"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"})
                 page = session.get(url)
             except Exception:
                 raise ValueError(f"One of the inputs is not a valid url: {url}")
