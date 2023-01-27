@@ -46,8 +46,7 @@ class SimpleWebPageReader(BaseReader):
         requests = RequestsWrapper()
         documents = []
         for url in urls:
-            headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36'}
-            response = requests.run(url, headers=headers)
+            response = requests.run(url)
             if self._html_to_text:
                 import html2text
 
