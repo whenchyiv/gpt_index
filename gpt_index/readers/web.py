@@ -46,6 +46,10 @@ class SimpleWebPageReader(BaseReader):
         requests = RequestsWrapper()
         documents = []
         for url in urls:
+            headers = requests.utils.default_headers()
+            headers.update({
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36',
+            })
             response = requests.run(url)
             if self._html_to_text:
                 import html2text
@@ -178,7 +182,11 @@ class BeautifulSoupWebReader(BaseReader):
         documents = []
         for url in urls:
             try:
-                page = requests.get(url)
+                headers = requests.utils.default_headers()
+                headers.update({
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36',
+                })
+                page = requests.get(url, headers=headers)
             except Exception:
                 raise ValueError(f"One of the inputs is not a valid url: {url}")
 
